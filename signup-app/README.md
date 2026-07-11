@@ -37,12 +37,30 @@ Any other tabs (e.g. `Schedule`) are ignored and untouched.
 1. `cp .env.example .env`, set `SHEET_ID` and `SECRET_KEY_BASE` (`openssl rand -hex 64`).
 2. Service account key at `credentials/service-account.json` (gitignored),
    sheet shared with the service account's email as **Editor**.
-3. `docker compose run --rm app bundle exec rake sheet:setup`
-4. Tunnel (one time): `./scripts/setup-tunnel.sh`. Note: this network blocks
-   QUIC, so `cloudflared/config.yml` needs `protocol: http2` (re-add it if
-   you ever recreate the tunnel config; symptom is Cloudflare error 1033).
+3. `docker compose run --rm app bundle exec rake sheet:setup` — skip if the
+   sheet already has the tabs (the task aborts rather than clobber them).
+4. Tunnel (one time): `TUNNEL_NAME=<per-machine-name> ./scripts/setup-tunnel.sh`.
+   Tunnel names are unique per machine (e.g. `stlucy-signup-home`) — creating
+   a fresh tunnel and letting `--overwrite-dns` take over the hostname is how
+   you move hosting to a new machine. The script writes `protocol: http2`
+   into `cloudflared/config.yml` (this network blocks QUIC; symptom of
+   running without it is Cloudflare error 1033). Caveat: the script reuses
+   `cloudflared/cert.pem` if present — that cert is zone-scoped, so if it was
+   issued for a different zone the DNS route lands in the wrong zone and the
+   `signup` CNAME must be pointed at `<tunnel-id>.cfargotunnel.com` via the
+   Cloudflare dashboard/API instead.
 5. `docker compose up -d --build`, then
    `curl https://signup.stlucyhomecoming.com/healthz` → `ok`.
+6. Boot service (one time): `sudo ./scripts/install-boot-service.sh` installs
+   and enables a systemd unit (`stlucy-signup.service`) that runs
+   `docker compose up -d` at boot. Docker's `restart: unless-stopped` already
+   covers most reboots; the unit makes it guaranteed and inspectable via
+   `systemctl status stlucy-signup`.
+
+**Security note:** nothing listens on the network. Compose publishes the app
+on `127.0.0.1:3000` only (loopback, for local checks) and the cloudflared
+sidecar makes outbound-only connections — no inbound traffic ever reaches
+the host.
 
 ## Local development
 

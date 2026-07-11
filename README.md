@@ -27,20 +27,46 @@ bundle exec jekyll serve   # http://localhost:4000
 
 ## Deploying (one-time setup)
 
-1. **GitHub**: create a repo, push this code, then Settings → Pages → deploy
-   from the `main` branch root. The `CNAME` file sets the custom domain.
-2. **Cloudflare** (also needed for the signup tunnel): add the
-   `stlucyhomecoming.com` zone, point the registrar at Cloudflare's
-   nameservers, then add DNS records:
-   - `A` records on `@` → GitHub Pages IPs: `185.199.108.153`,
-     `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` on `www` → `<your-github-username>.github.io`
-   - (the `signup` record is created automatically by
-     `signup-app/scripts/setup-tunnel.sh`)
-   - Set the GitHub Pages IPs' proxy status to **DNS only** (grey cloud) so
-     GitHub can issue its TLS cert, and enable "Enforce HTTPS" in GitHub Pages
-     settings once the cert is issued.
-3. **Signup service**: see [`signup-app/README.md`](signup-app/README.md).
+Deploy-time Cloudflare credentials live in `~/.config/stlucy-homecoming/cf.env`
+(mode 600, outside the repo — never committed):
+
+```
+CLOUDFLARE_API_TOKEN=...   # Zone:Read, DNS:Edit, Zone Settings:Edit,
+                           # Access: Apps and Policies:Edit,
+                           # Access: Orgs/IdPs/Groups:Edit
+CF_ACCOUNT_ID=...
+CF_ZONE_ID=...             # cached automatically by setup-pages-dns.sh
+CF_TEAM_NAME=...           # only needed if the account has no Zero Trust org
+```
+
+1. **GitHub Pages** (`gh auth login` first):
+   ```bash
+   gh api -X POST repos/mpmenne/stlucy-homecoming/pages \
+     -f build_type=legacy -f "source[branch]=main" -f "source[path]=/"
+   gh api -X PUT repos/mpmenne/stlucy-homecoming/pages -f cname=stlucyhomecoming.com
+   # once .https_certificate.state is issued/approved:
+   gh api -X PUT repos/mpmenne/stlucy-homecoming/pages -F https_enforced=true
+   ```
+2. **Cloudflare DNS**: `./scripts/setup-pages-dns.sh` points apex + `www` at
+   GitHub Pages (grey-cloud so GitHub can issue its TLS cert). After the cert
+   is issued and HTTPS enforced, run `./scripts/setup-pages-dns.sh --proxy`
+   to flip both hostnames through the Cloudflare proxy (needed for the Access
+   gate) and set SSL strict + always-use-HTTPS. The `signup` record is
+   created by `signup-app/scripts/setup-tunnel.sh`.
+3. **Signup service**: see [`signup-app/README.md`](signup-app/README.md) —
+   includes the boot service (`signup-app/scripts/install-boot-service.sh`).
+
+## Temporary stakeholder gate (Cloudflare Access)
+
+While the site is a proposal, apex + `www` sit behind a Cloudflare Access
+email one-time-PIN gate — only listed stakeholder emails get in. The signup
+API subdomain is deliberately not gated (the site's JS calls it cross-origin;
+it has its own CORS/honeypot/capacity guards).
+
+```bash
+STAKEHOLDER_EMAILS="a@x.com,b@y.com" ./scripts/setup-access.sh   # create/update gate
+./scripts/teardown-access.sh                                     # go public
+```
 
 ## SEO checklist (do these — they're the whole ballgame for outranking the old event page)
 
