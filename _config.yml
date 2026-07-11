@@ -36,3 +36,7 @@ exclude:
 
 # Public URL of the self-hosted volunteer signup API (Cloudflare Tunnel).
 signup_api: "https://signup.stlucyhomecoming.com"
+
+# Temporary stakeholder gate (_includes/password-gate.html). Flip to false
+# (or delete) when the site goes public.
+password_gate: true

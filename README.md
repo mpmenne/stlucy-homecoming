@@ -27,18 +27,6 @@ bundle exec jekyll serve   # http://localhost:4000
 
 ## Deploying (one-time setup)
 
-Deploy-time Cloudflare credentials live in `~/.config/stlucy-homecoming/cf.env`
-(mode 600, outside the repo — never committed):
-
-```
-CLOUDFLARE_API_TOKEN=...   # Zone:Read, DNS:Edit, Zone Settings:Edit,
-                           # Access: Apps and Policies:Edit,
-                           # Access: Orgs/IdPs/Groups:Edit
-CF_ACCOUNT_ID=...
-CF_ZONE_ID=...             # cached automatically by setup-pages-dns.sh
-CF_TEAM_NAME=...           # only needed if the account has no Zero Trust org
-```
-
 1. **GitHub Pages** (`gh auth login` first):
    ```bash
    gh api -X POST repos/mpmenne/stlucy-homecoming/pages \
@@ -47,26 +35,25 @@ CF_TEAM_NAME=...           # only needed if the account has no Zero Trust org
    # once .https_certificate.state is issued/approved:
    gh api -X PUT repos/mpmenne/stlucy-homecoming/pages -F https_enforced=true
    ```
-2. **Cloudflare DNS**: `./scripts/setup-pages-dns.sh` points apex + `www` at
-   GitHub Pages (grey-cloud so GitHub can issue its TLS cert). After the cert
-   is issued and HTTPS enforced, run `./scripts/setup-pages-dns.sh --proxy`
-   to flip both hostnames through the Cloudflare proxy (needed for the Access
-   gate) and set SSL strict + always-use-HTTPS. The `signup` record is
-   created by `signup-app/scripts/setup-tunnel.sh`.
+2. **Cloudflare DNS** (dashboard, zone `stlucyhomecoming.com`) — all records
+   **DNS only (grey cloud)** so GitHub can issue and renew its TLS cert:
+   - Delete any leftover records on `@` and `www` (e.g. parking-page records).
+   - `A` on `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
+     `185.199.111.153`
+   - `CNAME` on `www` → `mpmenne.github.io`
+   - `CNAME` on `signup` → `<tunnel-id>.cfargotunnel.com`, **Proxied** (orange
+     cloud — tunnels only work proxied). Normally created by
+     `signup-app/scripts/setup-tunnel.sh`; set by hand if the script's login
+     cert was scoped to the wrong zone.
 3. **Signup service**: see [`signup-app/README.md`](signup-app/README.md) —
    includes the boot service (`signup-app/scripts/install-boot-service.sh`).
 
-## Temporary stakeholder gate (Cloudflare Access)
+## Temporary stakeholder password gate
 
-While the site is a proposal, apex + `www` sit behind a Cloudflare Access
-email one-time-PIN gate — only listed stakeholder emails get in. The signup
-API subdomain is deliberately not gated (the site's JS calls it cross-origin;
-it has its own CORS/honeypot/capacity guards).
-
-```bash
-STAKEHOLDER_EMAILS="a@x.com,b@y.com" ./scripts/setup-access.sh   # create/update gate
-./scripts/teardown-access.sh                                     # go public
-```
+While the site is a proposal, every page shows a password overlay
+(`_includes/password-gate.html`, toggled by `password_gate` in `_config.yml`).
+It's a soft lock to signal "not public yet" — not real security (the repo and
+HTML are public). To go public: set `password_gate: false` and push.
 
 ## SEO checklist (do these — they're the whole ballgame for outranking the old event page)
 
