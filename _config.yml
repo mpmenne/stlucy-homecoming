@@ -1,0 +1,38 @@
+title: St. Lucy Homecoming
+tagline: Food, Rides, Music & Community Fun in St. Louis
+description: >-
+  St. Lucy Parish Homecoming 2026 — a St. Louis parish festival with food,
+  carnival rides, live music, and community fun. September 12 & 13, 2026 at the
+  St. Joan of Arc Campus, corner of Pernod & Hampton.
+url: "https://stlucyhomecoming.com"
+baseurl: ""
+lang: en
+timezone: America/Chicago
+
+# Social/SEO defaults used by jekyll-seo-tag
+logo: /assets/st_lucy_banner.jpg
+twitter:
+  card: summary_large_image
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/st_lucy_banner.jpg
+
+# The signup app is a separate self-hosted service; keep it out of the Pages build.
+exclude:
+  - signup-app
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .ruby-version
+
+# Public URL of the self-hosted volunteer signup API (Cloudflare Tunnel).
+signup_api: "https://signup.stlucyhomecoming.com"

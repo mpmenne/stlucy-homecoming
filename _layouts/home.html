@@ -1,0 +1,89 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="{{ '/assets/homecoming_image.webp' | relative_url }}" alt="" fetchpriority="high">
+  </div>
+  <div class="wrap hero-content">
+    <p class="hero-eyebrow">St. Lucy Parish presents</p>
+    <h1 class="hero-title">Homecoming<br><span class="hero-year">2026</span></h1>
+    <p class="hero-meta">
+      <span>Sept 12 + 13</span>
+      <span class="dot" aria-hidden="true">✦</span>
+      <span>St. Joan of Arc Campus</span>
+      <span class="dot" aria-hidden="true">✦</span>
+      <span>Pernod &amp; Hampton, St. Louis</span>
+      <span class="dot" aria-hidden="true">✦</span>
+      <span>Free</span>
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-sun btn-big" href="{{ '/volunteer/' | relative_url }}">Volunteer Sign-Up</a>
+      <a class="btn btn-ghost btn-big" href="#schedule">The Weekend</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {% for i in (1..8) %}<span>Food ✦ Rides ✦ Games ✦ Live Music ✦ </span>{% endfor %}
+  </div>
+</div>
+
+<section class="schedule" id="schedule">
+  <div class="wrap">
+    <h2 class="section-title">The <span class="accent">Weekend</span></h2>
+    {% for day in site.data.schedule.days %}
+    <div class="day">
+      <div class="day-header">
+        <h3 class="day-name">{{ day.name }}</h3>
+        <p class="day-date">{{ day.date }}</p>
+      </div>
+      <ol class="sched">
+        {% for item in day.items %}
+        <li class="sched-item kind-{{ item.kind | default: 'other' }}{% if item.headliner %} headliner{% endif %}">
+          {% if item.kind == 'tba' %}
+          <div class="sched-time"><span class="time-chip tba-chip">TBA</span></div>
+          {% elsif item.time %}
+          <div class="sched-time"><span class="time-chip">{{ item.time }}</span></div>
+          {% endif %}
+          <div class="sched-body">
+            {% if item.headliner %}<p class="sched-badge">Live Music · Main Stage</p>{% endif %}
+            <p class="sched-title">{{ item.title }}</p>
+            {% if item.desc %}<p class="sched-desc">{{ item.desc }}</p>{% endif %}
+            {% if item.link %}<a class="sched-link" href="{{ item.link }}" rel="noopener">About the band →</a>{% endif %}
+          </div>
+          <span class="sched-icon" aria-hidden="true">{% case item.kind %}{% when 'music' %}🎸{% when 'food' %}🌭{% when 'rides' %}🎡{% when 'games' %}🎯{% when 'tba' %}✨{% else %}🎪{% endcase %}</span>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="wrap page-body">
+  {{ content }}
+</div>
+
+{% if site.data.sponsors and site.data.sponsors.tiers and site.data.sponsors.tiers != empty %}
+<section class="sponsors" id="sponsors">
+  <div class="wrap">
+    <h2 class="section-title">Thank You, <span class="accent">Sponsors</span></h2>
+    {% for tier in site.data.sponsors.tiers %}
+    <div class="tier">
+      <h3 class="tier-name">{{ tier.name }}</h3>
+      <div class="sponsor-grid{% if forloop.first %} tier-lead{% endif %}">
+        {% for s in tier.sponsors %}
+        {% if s.url %}<a class="sponsor-tile" href="{{ s.url }}" rel="noopener" title="{{ s.name }}">{% else %}<span class="sponsor-tile" title="{{ s.name }}">{% endif %}
+          {% if s.logo %}<img src="{{ s.logo | relative_url }}" alt="{{ s.name }}" loading="lazy">{% else %}<span class="sponsor-word">{{ s.name }}</span>{% endif %}
+        {% if s.url %}</a>{% else %}</span>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+    <p class="sponsor-cta">Want to see your business up here?
+      <a href="{{ '/contact/' | relative_url }}">Become a sponsor →</a></p>
+  </div>
+</section>
+{% endif %}

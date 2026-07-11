@@ -1,0 +1,10 @@
+.env
+.bundle/
+vendor/
+credentials/
+cloudflared/
+log/
+tmp/
+.git/
+scripts/
+README.md

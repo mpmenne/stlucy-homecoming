@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /app/credentials/service-account.json
+    volumes:
+      - ./credentials:/app/credentials:ro
+    ports:
+      # Local/LAN testing only — the tunnel reaches the app over the compose
+      # network, so this mapping can be removed once everything works.
+      - "127.0.0.1:3000:3000"
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared:/etc/cloudflared:ro
+    depends_on:
+      - app
+    restart: unless-stopped

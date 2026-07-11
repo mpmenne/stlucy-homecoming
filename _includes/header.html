@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark" aria-hidden="true">🎡</span>
+      <span class="brand-text">St.&nbsp;Lucy <strong>Homecoming</strong></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="{{ '/' | relative_url }}" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
+      <a href="{{ '/flea-market/' | relative_url }}" {% if page.url contains "/flea-market/" %}class="active"{% endif %}>Flea Market</a>
+      <a href="{{ '/reunion/' | relative_url }}" {% if page.url contains "/reunion/" %}class="active"{% endif %}>’76 Reunion</a>
+      <a href="{{ '/contact/' | relative_url }}" {% if page.url contains "/contact/" %}class="active"{% endif %}>Contact</a>
+      <a href="{{ '/volunteer/' | relative_url }}" class="btn btn-nav">Volunteer</a>
+    </nav>
+  </div>
+</header>

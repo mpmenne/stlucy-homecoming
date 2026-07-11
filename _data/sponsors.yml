@@ -1,0 +1,24 @@
+# Sponsor wall — currently HIDDEN: the homepage section only renders when
+# `tiers:` below is uncommented and has entries. Waiting on confirmed
+# sponsorship amounts before showing anyone publicly.
+#
+# Logo files already saved in /assets/sponsors/: biggies.webp,
+# chris-pancakes.webp (note: that file is the Bartolino's Hospitality Group
+# sheet from last year's site — swap for a single Chris' logo).
+#
+# When ready, restore something like:
+#
+# tiers:
+#   - name: Headliner Sponsors
+#     sponsors:
+#       - name: "Chris' Pancake & Dining"          # $500
+#         url: https://www.chrispancakeanddining.com
+#         logo: /assets/sponsors/chris-pancakes.webp
+#   - name: Main Stage Sponsors
+#     sponsors:
+#       - name: Biggies Restaurant & Bar           # $250
+#         logo: /assets/sponsors/biggies.webp
+#       - name: Southwest Pediatrics               # amount TBC
+#       - name: Koho                               # amount TBC
+#
+# Items without `logo` render as wordmark tiles; omit `url` if unknown.

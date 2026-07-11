@@ -1,0 +1,15 @@
+.DS_Store
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+/Gemfile.lock
+*.sw*
+
+# Signup app secrets & local state
+signup-app/.env
+signup-app/credentials/
+signup-app/cloudflared/
+signup-app/log/
+signup-app/tmp/

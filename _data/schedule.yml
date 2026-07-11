@@ -1,0 +1,54 @@
+# The weekend schedule, in page order. Edit this file to add/change events —
+# each item needs: title. Optional: time, desc, kind, link, headliner.
+#   kind: music | food | rides | games | tba   (controls the icon/badge)
+#   headliner: true  → big festival-poster treatment (use for the bands)
+#   items with kind: tba render as a "more to come" placeholder slot
+days:
+  - name: Saturday
+    date: September 12, 2026
+    items:
+      - time: All day
+        kind: food
+        title: Festival Food & Drink
+        desc: Festival favorites all weekend long — come hungry.
+      - time: All day
+        kind: rides
+        title: Carnival Rides
+        desc: Carnival rides for all ages, all day.
+      - time: All day
+        kind: games
+        title: Games & Booths
+        desc: 25 booths of games and fun for kids and adults alike.
+      - time: Time TBA   # TODO: confirm Proud Larry's set time
+        kind: music
+        headliner: true
+        title: Proud Larry
+        desc: Live on the main stage.
+        link: https://www.bandsintown.com/e/108267912-proud-larry-at-st-lucy-homecoming
+      - kind: tba
+        title: More to come
+        desc: We're still adding to the Saturday schedule — check back soon.
+  - name: Sunday
+    date: September 13, 2026
+    items:
+      - time: All day
+        kind: food
+        title: Festival Food & Drink
+        desc: Back for round two — come hungry.
+      - time: All day
+        kind: rides
+        title: Carnival Rides
+        desc: One more day to ride everything twice.
+      - time: All day
+        kind: games
+        title: Games & Booths
+        desc: All 25 booths, all afternoon.
+      - time: 6:00–10:00 PM
+        kind: music
+        headliner: true
+        title: Griffin and the Gargoyles
+        desc: Closing out the weekend on the main stage.
+        link: https://www.griffinandthegargoyles.com
+      - kind: tba
+        title: More to come
+        desc: We're still adding to the Sunday schedule — check back soon.

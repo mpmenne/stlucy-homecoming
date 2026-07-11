@@ -1,0 +1,44 @@
+<!-- Festival structured data. The alternateName carries the event's former name
+     for search engines only — per the parish's wishes it must NOT appear in
+     user-visible copy anywhere on the site. -->
+<!-- TODO: verify postal code and add exact street address if the parish prefers -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Festival",
+  "name": "St. Lucy Homecoming",
+  "alternateName": ["St. Joan of Arc Homecoming", "SJA Homecoming", "St. Lucy Parish Homecoming 2026"],
+  "description": "The St. Lucy Homecoming is a St. Louis parish festival with food, carnival rides, live music, games, and community fun, held September 12 & 13, 2026 at the St. Joan of Arc Campus at Pernod & Hampton.",
+  "startDate": "2026-09-12",
+  "endDate": "2026-09-13",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "isAccessibleForFree": true,
+  "image": [
+    "{{ site.url }}/assets/st_lucy_banner.jpg",
+    "{{ site.url }}/assets/homecoming_image.webp"
+  ],
+  "location": {
+    "@type": "Place",
+    "name": "St. Joan of Arc Campus",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Pernod Ave & Hampton Ave",
+      "addressLocality": "St. Louis",
+      "addressRegion": "MO",
+      "postalCode": "63139",
+      "addressCountry": "US"
+    }
+  },
+  "performer": [
+    { "@type": "MusicGroup", "name": "Proud Larry" },
+    { "@type": "MusicGroup", "name": "Griffin and the Gargoyles", "url": "https://www.griffinandthegargoyles.com" }
+  ],
+  "organizer": {
+    "@type": "Organization",
+    "name": "St. Lucy Parish",
+    "url": "https://saintlucystl.org"
+  },
+  "url": "{{ site.url }}/"
+}
+</script>
