@@ -461,31 +461,27 @@ a:hover { color: var(--coral); }
   background: var(--night-2);
   padding: 4rem 0 4.5rem;
 }
-.sponsors .section-title { margin-bottom: 2.4rem; }
-.tier { margin-bottom: 2.2rem; }
-.tier-name {
-  font-size: 0.85rem;
-  font-family: var(--body);
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
+.sponsors .section-title { margin-bottom: 0.8rem; }
+.sponsor-lede {
   text-align: center;
-  margin: 0 0 1rem;
+  color: var(--muted);
+  margin: 0 0 2rem;
 }
 .sponsor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
   max-width: 900px;
   margin: 0 auto;
 }
-.sponsor-grid.tier-lead { grid-template-columns: repeat(auto-fit, minmax(260px, 320px)); justify-content: center; }
 .sponsor-tile {
+  flex: 1 1 190px;
+  max-width: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 88px;
+  min-height: 120px;
   padding: 16px 20px;
   background: #f4f1ea;
   border-radius: var(--r-md);
@@ -493,9 +489,20 @@ a:hover { color: var(--coral); }
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 a.sponsor-tile:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4); }
-.tier-lead .sponsor-tile { min-height: 130px; }
-.sponsor-tile img { max-height: 62px; max-width: 100%; width: auto; object-fit: contain; }
-.tier-lead .sponsor-tile img { max-height: 96px; }
+.sponsor-tile img { max-height: 88px; max-width: 100%; width: auto; object-fit: contain; }
+
+/* The SLU entry is a full promo flyer, not a logo — give it room to stay readable. */
+.sponsor-feature {
+  max-width: 300px;
+  margin: 14px auto 0;
+  padding: 16px;
+  background: #f4f1ea;
+  border-radius: var(--r-md);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.sponsor-feature:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4); }
+.sponsor-feature a { display: block; }
+.sponsor-feature img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: contain; margin: 0 auto; }
 .sponsor-word {
   font-weight: 700;
   font-size: 1.02rem;

@@ -48,13 +48,6 @@ bundle exec jekyll serve   # http://localhost:4000
 3. **Signup service**: see [`signup-app/README.md`](signup-app/README.md) —
    includes the boot service (`signup-app/scripts/install-boot-service.sh`).
 
-## Temporary stakeholder password gate
-
-While the site is a proposal, every page shows a password overlay
-(`_includes/password-gate.html`, toggled by `password_gate` in `_config.yml`).
-It's a soft lock to signal "not public yet" — not real security (the repo and
-HTML are public). To go public: set `password_gate: false` and push.
-
 ## SEO checklist (do these — they're the whole ballgame for outranking the old event page)
 
 - [ ] Verify the domain in [Google Search Console](https://search.google.com/search-console)

@@ -13,3 +13,6 @@ signup-app/credentials/
 signup-app/cloudflared/
 signup-app/log/
 signup-app/tmp/
+
+# Personal export accidentally dropped into assets/ — must never be published.
+assets/Connections*

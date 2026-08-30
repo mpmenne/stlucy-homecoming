@@ -1,24 +1,37 @@
-# Sponsor wall — currently HIDDEN: the homepage section only renders when
-# `tiers:` below is uncommented and has entries. Waiting on confirmed
-# sponsorship amounts before showing anyone publicly.
+# 2026 Homecoming sponsors, mirroring the list on
+# https://www.stjoanofarcstl.com/homecoming
 #
-# Logo files already saved in /assets/sponsors/: biggies.webp,
-# chris-pancakes.webp (note: that file is the Bartolino's Hospitality Group
-# sheet from last year's site — swap for a single Chris' logo).
-#
-# When ready, restore something like:
-#
-# tiers:
-#   - name: Headliner Sponsors
-#     sponsors:
-#       - name: "Chris' Pancake & Dining"          # $500
-#         url: https://www.chrispancakeanddining.com
-#         logo: /assets/sponsors/chris-pancakes.webp
-#   - name: Main Stage Sponsors
-#     sponsors:
-#       - name: Biggies Restaurant & Bar           # $250
-#         logo: /assets/sponsors/biggies.webp
-#       - name: Southwest Pediatrics               # amount TBC
-#       - name: Koho                               # amount TBC
-#
-# Items without `logo` render as wordmark tiles; omit `url` if unknown.
+# The homepage section renders only while `sponsors:` below has entries.
+# Sponsors without a `logo` fall back to a text wordmark tile; omit `url`
+# if the business has no site.
+
+sponsors:
+  - name: Azar Orthodontics
+    url: https://azarorthodontics.com/
+    logo: /assets/sponsors/azar-orthodontics.webp
+  - name: Bartolino's Hospitality Group
+    url: https://www.bartolinosrestaurants.com/
+    logo: /assets/sponsors/bartolinos.webp
+  - name: Hoffmeister Colonial Mortuary
+    url: https://www.dignitymemorial.com/funeral-homes/missouri/st-louis/hoffmeister-colonial-mortuary/4722
+    logo: /assets/sponsors/hoffmeister.webp
+  - name: Merlo Plumbing
+    url: https://merloplumbing.com/
+    logo: /assets/sponsors/merlo-plumbing.webp
+  - name: Southside Hardware
+    url: https://stores.truevalue.com/mo/st-louis/14105/
+    logo: /assets/sponsors/southside-hardware.webp
+  - name: Southwest Pediatrics
+    url: https://southwestpediatrics.wustl.edu/
+    logo: /assets/sponsors/southwest-pediatrics.webp
+  - name: St. John Environmental Consulting, LLC
+    url: https://stjohnenv.com/
+    logo: /assets/sponsors/st-john-environmental.webp
+
+# Rendered full-size below the grid: this one is a promo flyer with a QR code
+# and an offer code, not a logo, so it would be illegible at grid size. The
+# source page links nothing here; cade.slu.edu is taken from the artwork.
+feature:
+  name: SLU Center for Advanced Dental Education
+  url: https://cade.slu.edu
+  logo: /assets/sponsors/slu-dental.webp

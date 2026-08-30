@@ -18,8 +18,7 @@ layout: default
       <span>Free</span>
     </p>
     <div class="hero-actions">
-      <a class="btn btn-sun btn-big" href="{{ '/volunteer/' | relative_url }}">Volunteer Sign-Up</a>
-      <a class="btn btn-ghost btn-big" href="#schedule">The Weekend</a>
+      <a class="btn btn-sun btn-big" href="#schedule">The Weekend</a>
     </div>
   </div>
 </section>
@@ -66,24 +65,28 @@ layout: default
   {{ content }}
 </div>
 
-{% if site.data.sponsors and site.data.sponsors.tiers and site.data.sponsors.tiers != empty %}
+{% assign sp = site.data.sponsors %}
+{% if sp and sp.sponsors and sp.sponsors != empty %}
 <section class="sponsors" id="sponsors">
   <div class="wrap">
     <h2 class="section-title">Thank You, <span class="accent">Sponsors</span></h2>
-    {% for tier in site.data.sponsors.tiers %}
-    <div class="tier">
-      <h3 class="tier-name">{{ tier.name }}</h3>
-      <div class="sponsor-grid{% if forloop.first %} tier-lead{% endif %}">
-        {% for s in tier.sponsors %}
-        {% if s.url %}<a class="sponsor-tile" href="{{ s.url }}" rel="noopener" title="{{ s.name }}">{% else %}<span class="sponsor-tile" title="{{ s.name }}">{% endif %}
-          {% if s.logo %}<img src="{{ s.logo | relative_url }}" alt="{{ s.name }}" loading="lazy">{% else %}<span class="sponsor-word">{{ s.name }}</span>{% endif %}
-        {% if s.url %}</a>{% else %}</span>{% endif %}
-        {% endfor %}
-      </div>
+    <p class="sponsor-lede">Please patronize our sponsors.</p>
+    <div class="sponsor-grid">
+      {% for s in sp.sponsors %}
+      {% if s.url %}<a class="sponsor-tile" href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}">{% else %}<span class="sponsor-tile" title="{{ s.name }}">{% endif %}
+        {% if s.logo %}<img src="{{ s.logo | relative_url }}" alt="{{ s.name }}" loading="lazy">{% else %}<span class="sponsor-word">{{ s.name }}</span>{% endif %}
+      {% if s.url %}</a>{% else %}</span>{% endif %}
+      {% endfor %}
     </div>
-    {% endfor %}
+    {% if sp.feature %}
+    <figure class="sponsor-feature">
+      {% if sp.feature.url %}<a href="{{ sp.feature.url }}" target="_blank" rel="noopener" title="{{ sp.feature.name }}">{% endif %}
+        <img src="{{ sp.feature.logo | relative_url }}" alt="{{ sp.feature.name }}" loading="lazy">
+      {% if sp.feature.url %}</a>{% endif %}
+    </figure>
+    {% endif %}
     <p class="sponsor-cta">Want to see your business up here?
-      <a href="{{ '/contact/' | relative_url }}">Become a sponsor →</a></p>
+      <a href="{{ '/contact/' | relative_url }}">Become a sponsor &rarr;</a></p>
   </div>
 </section>
 {% endif %}

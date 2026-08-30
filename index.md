@@ -39,14 +39,6 @@ St. Louis Hills. Free admission, all ages, all welcome.
   </div>
 </div>
 
-<div class="callout">
-  <h3>Join the crew</h3>
-  <p>Homecoming happens because neighbors pitch in — booth chairs, 2-hour
-  booth shifts, setup and teardown. Sign up with your friends and see who
-  you'll be working with.</p>
-  <p><a class="btn btn-sun" href="/volunteer/">Volunteer Sign-Up</a></p>
-</div>
-
 ## Calling all alumni
 
 Were you part of **Church of the Magdalen**, **Our Lady of Sorrows**, or
