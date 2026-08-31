@@ -9,18 +9,14 @@ description: >-
   in St. Louis.
 ---
 
-## Homecoming organizers
+## Homecoming chairs
 
 <div class="cards">
   <div class="card">
-    <h3>Nicole Tregoning</h3>
-    <p>Volunteering, booth chairs, and general questions.</p>
-    <p><a href="mailto:2027homecoming@gmail.com">2027homecoming@gmail.com</a></p>
-  </div>
-  <div class="card">
-    <h3>Cathy Zitko</h3>
-    <p>Volunteering, booth chairs, and general questions.</p>
-    <p><a href="mailto:czitko21@gmail.com">czitko21@gmail.com</a></p>
+    <h3>Meghan &amp; David Anderson</h3>
+    <p>2026 Homecoming chairs — volunteering, booth chairs, donations, and
+    general questions.</p>
+    <p><a href="mailto:2026homecoming@gmail.com">2026homecoming@gmail.com</a></p>
   </div>
 </div>
 
