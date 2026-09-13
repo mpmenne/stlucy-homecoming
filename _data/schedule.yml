@@ -1,4 +1,5 @@
 # The weekend schedule, in page order. Edit this file to add/change events —
+# each day needs: name, date. Optional: hours (grounds-open time shown under the date).
 # each item needs: title. Optional: time, desc, kind, link, headliner.
 #   kind: music | food | rides | games | tba   (controls the icon/badge)
 #   headliner: true  → big festival-poster treatment (use for the bands)
@@ -6,6 +7,7 @@
 days:
   - name: Saturday
     date: September 12, 2026
+    hours: 11 AM – 11 PM
     items:
       - time: All day
         kind: food
@@ -36,6 +38,7 @@ days:
         desc: Closing out Saturday night on the main stage.
   - name: Sunday
     date: September 13, 2026
+    hours: 12 – 10 PM
     items:
       - time: All day
         kind: food
@@ -49,6 +52,10 @@ days:
         kind: games
         title: Games & Booths
         desc: All 25 booths, all afternoon.
+      - time: Noon–4:00 PM
+        kind: rides
+        title: Family Time
+        desc: Ride bracelets available to the public, Sunday only — $25.
       - time: Noon–1:00 PM
         kind: music
         title: Stemmler Dancers
