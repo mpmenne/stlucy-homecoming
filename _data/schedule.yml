@@ -19,15 +19,21 @@ days:
         kind: games
         title: Games & Booths
         desc: 25 booths of games and fun for kids and adults alike.
-      - time: Time TBA   # TODO: confirm Proud Larry's set time
+      - time: Noon–4:00 PM
         kind: music
         headliner: true
         title: Proud Larry
         desc: Live on the main stage.
         link: https://www.bandsintown.com/e/108267912-proud-larry-at-st-lucy-homecoming
-      - kind: tba
-        title: More to come
-        desc: We're still adding to the Saturday schedule — check back soon.
+      - time: 4:00–7:00 PM
+        kind: music
+        title: Rick the DJ
+        desc: Keeping the party going between live sets.
+      - time: 7:00–11:00 PM
+        kind: music
+        headliner: true
+        title: Jordan Isakson
+        desc: Closing out Saturday night on the main stage.
   - name: Sunday
     date: September 13, 2026
     items:
@@ -43,12 +49,22 @@ days:
         kind: games
         title: Games & Booths
         desc: All 25 booths, all afternoon.
+      - time: Noon–1:00 PM
+        kind: music
+        title: Stemmler Dancers
+        desc: Opening up Sunday's entertainment.
+      - time: 2:00–4:00 PM
+        kind: music
+        headliner: true
+        title: Grateful Dads
+        desc: Live on the main stage.
+      - time: 4:00–6:00 PM
+        kind: music
+        title: Rick the DJ
+        desc: Keeping the party going between live sets.
       - time: 6:00–10:00 PM
         kind: music
         headliner: true
         title: Griffin and the Gargoyles
         desc: Closing out the weekend on the main stage.
         link: https://www.griffinandthegargoyles.com
-      - kind: tba
-        title: More to come
-        desc: We're still adding to the Sunday schedule — check back soon.

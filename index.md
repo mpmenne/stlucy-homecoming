@@ -24,8 +24,7 @@ St. Louis Hills. Free admission, all ages, all welcome.
   </div>
   <div class="info-tile">
     <p class="info-label">Hours</p>
-    <p class="info-value">Coming soon</p>
-    <!-- TODO: add Sat/Sun hours when set -->
+    <p class="info-value">Sat 11 AM – 11 PM<br><small>Sun 12 – 10 PM</small></p>
   </div>
   <div class="info-tile">
     <p class="info-label">Location</p>
@@ -61,13 +60,13 @@ browsing — with food while you shop.
 
 <div class="poster-split">
   <figure class="photo-frame">
-    <a href="/assets/st_lucy_banner.jpg"><img src="/assets/st_lucy_banner.jpg" alt="St. Lucy Parish Homecoming 2026 save-the-date poster" loading="lazy"></a>
+    <a href="/assets/st_lucy_poster.jpg"><img src="/assets/st_lucy_poster.jpg" alt="St. Lucy Homecoming 2026 poster with the weekend schedule" loading="lazy"></a>
   </figure>
   <div>
-    <p>Help us pack the midway! Share the save-the-date poster with friends,
-    family, and neighbors — on the fridge, in the group chat, on the bulletin
-    board at work.</p>
-    <p><a class="btn btn-sun" href="/assets/st_lucy_banner.jpg" download>Download the Poster</a></p>
+    <p>Help us pack the midway! Share the poster with friends, family, and
+    neighbors — on the fridge, in the group chat, on the bulletin board at
+    work.</p>
+    <p><a class="btn btn-sun" href="/assets/st_lucy_poster.jpg" download>Download the Poster</a></p>
   </div>
 </div>
 
