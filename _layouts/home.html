@@ -37,7 +37,6 @@ layout: default
       <div class="day-header">
         <h3 class="day-name">{{ day.name }}</h3>
         <p class="day-date">{{ day.date }}</p>
-        {% if day.hours %}<p class="day-hours">Grounds open {{ day.hours }}</p>{% endif %}
       </div>
       <ol class="sched">
         {% for item in day.items %}
@@ -53,7 +52,7 @@ layout: default
             {% if item.desc %}<p class="sched-desc">{{ item.desc }}</p>{% endif %}
             {% if item.link %}<a class="sched-link" href="{{ item.link }}" rel="noopener">About the band →</a>{% endif %}
           </div>
-          <span class="sched-icon" aria-hidden="true">{% case item.kind %}{% when 'music' %}🎸{% when 'food' %}🌭{% when 'rides' %}🎡{% when 'games' %}🎯{% when 'tba' %}✨{% else %}🎪{% endcase %}</span>
+          <span class="sched-icon" aria-hidden="true">{% case item.kind %}{% when 'music' %}🎸{% when 'food' %}🌭{% when 'rides' %}🎡{% when 'games' %}🎯{% when 'gate' %}🚪{% when 'tba' %}✨{% else %}🎪{% endcase %}</span>
         </li>
         {% endfor %}
       </ol>

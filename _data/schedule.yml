@@ -1,14 +1,16 @@
 # The weekend schedule, in page order. Edit this file to add/change events —
-# each day needs: name, date. Optional: hours (grounds-open time shown under the date).
-# each item needs: title. Optional: time, desc, kind, link, headliner.
-#   kind: music | food | rides | games | tba   (controls the icon/badge)
+# each day needs: name, date. items need: title. Optional: time, desc, kind, link, headliner.
+#   kind: music | food | rides | games | gate | tba   (controls the icon/badge)
 #   headliner: true  → big festival-poster treatment (use for the bands)
 #   items with kind: tba render as a "more to come" placeholder slot
 days:
   - name: Saturday
     date: September 12, 2026
-    hours: 11 AM – 11 PM
     items:
+      - time: 11:00 AM–11:00 PM
+        kind: gate
+        title: Grounds Open
+        desc: Gates open for the day — come early, stay late.
       - time: All day
         kind: food
         title: Festival Food & Drink
@@ -38,8 +40,11 @@ days:
         desc: Closing out Saturday night on the main stage.
   - name: Sunday
     date: September 13, 2026
-    hours: 12 – 10 PM
     items:
+      - time: Noon–10:00 PM
+        kind: gate
+        title: Grounds Open
+        desc: Gates open for the day — come early, stay late.
       - time: All day
         kind: food
         title: Festival Food & Drink
